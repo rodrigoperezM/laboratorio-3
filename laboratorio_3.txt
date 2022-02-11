@@ -1,0 +1,104 @@
+#include <iostream>
+#include <math.h>
+#include<conio.h>
+#include<math.h>
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+#include<fstream>
+
+//#define cl "0000"
+
+using namespace std;
+
+int menu(){
+int regi;
+
+system("cls"); //limpiar pantalla
+cout<<"REGISTRO DE USUARIOS"<<endl<<endl;
+cout<<"1. Ingrese Cedula: "<<endl;
+cout<<"2. Ingrese Clave: "<<endl;
+cout<<"3. Ingrese saldo: "<<endl;
+cout<<"Elija opcion: ";
+cin>>regi;
+return regi;
+
+}
+void agregar(ofstream &es){
+
+    system("cls");
+    string cedula;
+    string clave;
+    string saldo;
+    es.open("sudo.txt", ios::out | ios::app);
+    cout<<"cedula: ",cin>>cedula;
+    //cout<<"saldo: ",cin>>saldo;
+    cout<<"clave: ",cin>>clave;
+    es<<cedula<<" "<<clave<<" "<<saldo<<"\n";
+    es.close();
+    }
+
+
+
+
+int main()
+{
+
+    ofstream archivo;  //variable tipo archivo
+
+    int op;
+
+    do{
+
+        system("cls");
+        op=menu();
+        switch(op){
+             case 1:
+                  agregar(archivo);
+        }
+    }while(op!=3);
+
+
+
+    //archivo.open("sudo.txt");  //abrir
+    //cout<<"muestra";
+   // archivo<<"1234";
+
+
+    int cla=1234,opcion,vt=1000,clave;
+    float s_i=100000,retiro,saldo,ns;
+
+    cout<<"ingrese clave: ";cin>>cla;
+    while(cla!=1234)
+       { cout<<"Clave invalida"<<endl;
+    cout<<"ingrese clave";cin>>cla;}
+
+    if(cla==1234)
+    {cout<<"1. Consultar saldo"<<endl;
+        cout<<"2. Retirar dinero"<<endl;
+    cout<<"Elija una opcion: ";cin>>opcion;
+    cout<<endl;}
+
+
+    switch(opcion)
+    {case 1:
+    {cout<<"Saldo: "<<s_i<<endl;}
+
+    case 2:
+        cout<<"Cuanto va a retiar: ";cin>>retiro;
+        cout<<endl;
+    while(retiro>s_i)
+    {cout<<"Saldo insuficiente"<<endl;
+    cout<<"Ingrese un valor menor o igual a "<<s_i<<" que es su saldo total"<<endl;
+    cout<<"Cuanto va a retiar: ";cin>>retiro;}
+
+    if(retiro<=s_i)
+{ns=s_i-retiro-vt;
+    cout<<"Retiro: "<<retiro<<" + "<< vt<<" por la transaccion = "<<retiro+vt<<endl;
+
+    cout<<"Nuevo saldo: "<<ns;}
+    return 0;
+}
+
+
+}
